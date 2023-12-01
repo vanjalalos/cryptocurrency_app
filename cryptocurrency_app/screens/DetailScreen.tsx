@@ -17,18 +17,18 @@ import transformDataForChart from '../helpers/transformDataForChart';
 import useCryptocurrencyDetail from '../hooks/useCryptocurrencyDetail';
 import usePrice from '../hooks/usePrice';
 
-import { ICryptocurrencyItem } from '../types/types';
+import { IChartData, ICryptocurrencyItem } from '../types/types';
 
 import { colors } from '../globalStyle/colors';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 interface IDetailsScreen {
   route: {
     params: ICryptocurrencyItem;
   };
 }
+
 const DetailScreen: FC<IDetailsScreen> = ({ route }) => {
-  const { name, id, symbol } = route.params;
+  const { id } = route.params;
 
   const { data, isLoading, isSuccess, isError } = useCryptocurrencyDetail(id);
   const {
@@ -37,7 +37,10 @@ const DetailScreen: FC<IDetailsScreen> = ({ route }) => {
     isLoading: isLoadingPrice,
   } = usePrice(id);
 
-  const dataChart = isSuccessPrice ? transformDataForChart(price) : [];
+  const dataChart: IChartData[] = isSuccessPrice
+    ? transformDataForChart(price)
+    : [];
+
   return (
     <SafeAreaView style={styles.container}>
       {isLoading ? (
@@ -156,13 +159,7 @@ const DetailScreen: FC<IDetailsScreen> = ({ route }) => {
             </View>
 
             {isLoadingPrice ? (
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginTop: 24,
-                }}>
+              <View style={styles.loader_container}>
                 <ActivityIndicator size={'small'} color={colors.primary} />
               </View>
             ) : (
@@ -183,7 +180,6 @@ const DetailScreen: FC<IDetailsScreen> = ({ route }) => {
                     backgroundColor: colors.textWhite,
                     backgroundGradientFrom: colors.textWhite,
                     backgroundGradientTo: colors.background,
-                    //decimalPlaces: 2,
                     color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                     labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                     style: {
@@ -214,8 +210,6 @@ const DetailScreen: FC<IDetailsScreen> = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-    //justifyContent: 'center',
   },
   detail_container: {
     paddingVertical: 24,
@@ -260,7 +254,6 @@ const styles = StyleSheet.create({
   },
   info_container: {
     justifyContent: 'space-between',
-    // alignItems: 'center',
     flexDirection: 'row',
   },
   info_item: {
@@ -273,6 +266,12 @@ const styles = StyleSheet.create({
   label: {
     paddingBottom: 4,
     color: colors.textLabel,
+  },
+  loader_container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 24,
   },
 });
 

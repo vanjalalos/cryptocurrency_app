@@ -1,25 +1,21 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import { ICryptocurrencyData, ITradingVolumeData } from '../types/types';
+
+
 
 
 const fetchCryptocurrencyById = async (id: string) => {
   const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
-  return data;
+  return data as ICryptocurrencyData;
 }
 
-//const useCryptocurrencyById = (id: string) => useQuery('getById', () => fetchCryptocurrencyById(id));
 
 const fetchTradingVolume = async (id: string) => {
   const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=1&interval=daily&precision=2`);
-  return data;
+  return data as ITradingVolumeData;
 }
 
-// const fetchPrice =async (id:string) => {
-//   const {data} = await axios.get (`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30&precision=2`);
-//   return data;
-// }
-//const useTradingVolume = (id: string) => useQuery('getById', () => fetchTradingVolume(id));
-///xport default useCryptocurrencyById;
 
 const useCryptocurrencyDetail = (id: string) => {
   return useQuery(['cryptocurrencyDetail', id], async () => {

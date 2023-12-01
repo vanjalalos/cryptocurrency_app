@@ -4,34 +4,32 @@ import { colors } from '../../globalStyle/colors';
 import formattingPercentage from '../../helpers/formattingPercentage';
 import { ICryptocurrencyItem } from '../../types/types';
 
-interface CryptoCurrencyItemProps {
+interface ICryptoCurrencyItemProps {
   item: ICryptocurrencyItem;
   onPress: (item: ICryptocurrencyItem) => void;
 }
 
-const CryptocurrencyItem: FC<CryptoCurrencyItemProps> = ({ item, onPress }) => {
+const CryptocurrencyItem: FC<ICryptoCurrencyItemProps> = ({
+  item,
+  onPress,
+}) => {
   return (
     <>
       <TouchableOpacity onPress={() => onPress(item)}>
         <View style={styles.container}>
-          <View style={{ flex: 0.1, justifyContent: 'center' }}>
+          <View style={styles.image_container}>
             <Image source={{ uri: item.image }} style={styles.image} />
           </View>
-          <View
-            style={{ flex: 0.1, marginRight: 4, justifyContent: 'flex-start' }}>
+          <View style={styles.symbol}>
             <Text> {item.symbol}</Text>
           </View>
 
-          <View style={{ flex: 0.2 }}>
+          <View style={styles.name_container}>
             <Text> {item.name}</Text>
           </View>
-          <View
-            style={{
-              flex: 0.6,
-              alignItems: 'flex-end',
-            }}>
+          <View style={styles.container_flex}>
             <Text>
-              <Text style={styles.label}>Market cap</Text>{' '}
+              <Text style={styles.label}>Market cap </Text>
               {item.market_cap.toString()}
             </Text>
           </View>
@@ -70,13 +68,7 @@ const CryptocurrencyItem: FC<CryptoCurrencyItemProps> = ({ item, onPress }) => {
             </Text>
           </View>
         </View>
-        <View
-          style={{
-            borderBottomColor: colors.borderColor,
-            borderBottomWidth: 0.8,
-            width: '100%',
-            marginBottom: 12,
-          }}></View>
+        <View style={styles.border}></View>
       </TouchableOpacity>
     </>
   );
@@ -93,32 +85,35 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 8,
   },
-
+  image_container: { flex: 0.1, justifyContent: 'center' },
   image: {
     width: 25,
     height: 25,
   },
-  view_container: {
-    flex: 0.6,
-    alignItems: 'flex-start',
-  },
+
   name_container: {
-    flex: 0.4,
+    flex: 0.2,
   },
   container_flex: {
-    flex: 0.5,
-    justifyContent: 'flex-start',
+    flex: 0.6,
     alignItems: 'flex-end',
   },
   label: {
     color: colors.textLabel,
     opacity: 0.8,
   },
+  symbol: { flex: 0.1, marginRight: 4, justifyContent: 'flex-start' },
   price_color_red: {
     color: colors.colorNegative,
   },
   price_color_blue: {
     color: colors.colorPositive,
+  },
+  border: {
+    borderBottomColor: colors.borderColor,
+    borderBottomWidth: 0.8,
+    width: '100%',
+    marginBottom: 12,
   },
 });
 

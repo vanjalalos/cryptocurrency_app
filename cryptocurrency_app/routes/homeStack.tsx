@@ -5,6 +5,7 @@ import MainScreen from '../screens/MainScreen';
 // import HomeScreen from '../screens/Home';
 // import CardScreen from '../screens/CardScreen';
 import { colors } from '../globalStyle/colors';
+import SearchScreen from '../screens/SearchScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,8 +21,8 @@ const HomeStack = () => {
       <Stack.Screen
         name='Home'
         component={MainScreen}
-        options={({ route }) => ({
-          title: route.name === 'DetailScreen' ? 'Back' : 'Cryptocurrency list',
+        options={() => ({
+          title: 'Cryptocurrency list',
         })}
       />
       <Stack.Screen
@@ -29,6 +30,13 @@ const HomeStack = () => {
         component={DetailScreen}
         options={({ route }) => ({
           title: route.params?.name,
+        })}
+      />
+      <Stack.Screen
+        name='Search'
+        component={SearchScreen}
+        options={() => ({
+          title: 'Search',
         })}
       />
     </Stack.Navigator>

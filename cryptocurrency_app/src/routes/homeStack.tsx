@@ -1,10 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { colors } from '../globalStyle/colors';
 import DetailScreen from '../screens/DetailScreen';
 import MainScreen from '../screens/MainScreen';
-// import { Pressable, Text } from 'react-native';
-// import HomeScreen from '../screens/Home';
-// import CardScreen from '../screens/CardScreen';
-import { colors } from '../globalStyle/colors';
 import SearchScreen from '../screens/SearchScreen';
 
 const Stack = createNativeStackNavigator();
@@ -29,7 +27,7 @@ const HomeStack = () => {
         name='DetailScreen'
         component={DetailScreen}
         options={({ route }) => ({
-          title: route.params?.name,
+          title: route?.params?.name,
         })}
       />
       <Stack.Screen

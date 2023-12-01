@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ActivityIndicator } from 'react-native';
-import { colors } from '../../globalStyle/colors';
+import { colors } from '../../colors';
 
 interface ILoader {
   isLoading: boolean;

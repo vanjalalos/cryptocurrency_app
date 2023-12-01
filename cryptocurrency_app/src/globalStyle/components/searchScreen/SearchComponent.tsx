@@ -4,8 +4,8 @@ import { View, StyleSheet } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { Ionicons } from '@expo/vector-icons';
 
-import { colors } from '../../globalStyle/colors';
-import { ISearchComponent } from '../../types/types';
+import { colors } from '../../colors';
+import { ISearchComponent } from '../../../types/types';
 import { SearchBarBaseProps } from 'react-native-elements/dist/searchbar/SearchBar';
 
 const SearchComponent: FC<ISearchComponent> = ({ onSearch, onClear }) => {

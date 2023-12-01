@@ -8,14 +8,14 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import SearchComponent from '../components/searchScreen/SearchComponent';
-import SearchItem from '../components/searchScreen/SearchItem';
-import EmptyListComponent from '../components/common/EmptyList';
+import SearchComponent from '../globalStyle/components/searchScreen/SearchComponent';
+import SearchItem from '../globalStyle/components/searchScreen/SearchItem';
+import EmptyListComponent from '../globalStyle/components/common/EmptyList';
 
 import { colors } from '../globalStyle/colors';
 import fetchSearchData from '../hooks/useSearch';
 import { ISearchScreen } from '../types/types';
-import ErrorView from '../components/common/ErrorView';
+import ErrorView from '../globalStyle/components/common/ErrorView';
 
 interface ISearchScreenProp {
   coin: ISearchScreen[];

@@ -10,10 +10,10 @@ import {
 
 import { useInfiniteQuery, useQuery } from 'react-query';
 
-import EmptyListComponent from '../components/common/EmptyList';
-import ErrorView from '../components/common/ErrorView';
-import Loader from '../components/common/Loader';
-import CryptocurrencyItem from '../components/mainScreen/CryptocurrencyItem';
+import EmptyListComponent from '../globalStyle/components/common/EmptyList';
+import ErrorView from '../globalStyle/components/common/ErrorView';
+import Loader from '../globalStyle/components/common/Loader';
+import CryptocurrencyItem from '../globalStyle/components/mainScreen/CryptocurrencyItem';
 
 import fetchCryptocurrency from '../hooks/useCryptocurrency';
 

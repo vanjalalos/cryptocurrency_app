@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors } from '../../globalStyle/colors';
+import { colors } from '../../colors';
 
 const EmptyListComponent: FC = () => {
   return (

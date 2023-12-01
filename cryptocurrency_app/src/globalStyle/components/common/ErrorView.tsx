@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '../../globalStyle/colors';
+import { colors } from '../../colors';
 
 interface IErrorView {
   message: string;

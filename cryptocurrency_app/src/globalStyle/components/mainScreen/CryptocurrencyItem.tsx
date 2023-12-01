@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { colors } from '../../globalStyle/colors';
-import formattingPercentage from '../../helpers/formattingPercentage';
-import { ICryptocurrencyItem } from '../../types/types';
+import { colors } from '../../colors';
+import formattingPercentage from '../../../helpers/formattingPercentage';
+import { ICryptocurrencyItem } from '../../../types/types';
 
 interface ICryptoCurrencyItemProps {
   item: ICryptocurrencyItem;
